@@ -6,9 +6,9 @@ var util = require('util');
 var through = require('through2');
 var Connection = require('ssh2');
 var async = require('async');
-var parents = require('parents');
 var Stream = require('stream');
 var assign = require('object-assign');
+var pathwalker = require("pathwalker");
 
 var normalizePath = function(path){
     return path.replace(/\\/g, '/');
@@ -235,9 +235,7 @@ module.exports = function (options) {
             var dirname=path.dirname(finalRemotePath);
             //get parents of the target dir
 
-            var fileDirs = parents(dirname)
-                .map(function(d){return d.replace(/^\/~/,"~");})
-                .map(normalizePath);
+            var fileDirs = pathwalker(dirname).map(function(d){return d.replace(/^\/~/,"~");}).map(normalizePath);
             //get filter out dirs that are closer to root than the base remote path
             //also filter out any dirs made during this gulp session
             fileDirs = fileDirs.filter(function(d){return d.length>remotePath.length&&!mkDirCache[d];});

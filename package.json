@@ -6,7 +6,7 @@
   "repository": "gtg092x/gulp-sftp",
   "homepage": "https://github.com/gtg092x/gulp-sftp/",
   "bugs": {
-    "url" : "https://github.com/gtg092x/gulp-sftp/issues"
+    "url": "https://github.com/gtg092x/gulp-sftp/issues"
   },
   "author": {
     "name": "Matthew Drake",
@@ -47,5 +47,7 @@
     "ssh2": ">0.3.3",
     "through2": "~0.4.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "pathwalker": "0.0.1"
+  }
 }
